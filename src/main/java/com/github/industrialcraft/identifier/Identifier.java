@@ -1,5 +1,7 @@
 package com.github.industrialcraft.identifier;
 
+import java.util.Objects;
+
 public class Identifier {
     public final String namespace;
     public  final String id;
@@ -19,5 +21,16 @@ public class Identifier {
     @Override
     public String toString() {
         return namespace + ":" + id;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Identifier that = (Identifier) o;
+        return namespace.equals(that.namespace) && id.equals(that.id);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(namespace, id);
     }
 }
